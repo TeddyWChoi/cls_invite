@@ -1,16 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>블랙샷 초대 이벤트 마이크로사이트 디자인</title>
-      <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
-    </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Closers Referral Event</title>
+  <meta name="description" content="Closers Global Referral Event - Invite your friends and earn special rewards!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+<body>
+
+  <div id="app">
+    <div class="page-wrapper">
+
+      <!-- Background layers -->
+      <div class="bg-grid"></div>
+      <div class="bg-beams"></div>
+      <div class="bg-glow bg-glow-blue"></div>
+      <div class="bg-glow bg-glow-yellow"></div>
+
+      <!-- Characters (desktop) -->
+      <div class="char char-tris">
+        <div class="char-float">
+          <img src="images/char-tris.webp" alt="" fetchpriority="high" decoding="async" />
+        </div>
+      </div>
+      <div class="char char-yuria">
+        <div class="char-float">
+          <img src="images/char-yuria.webp" alt="" fetchpriority="high" decoding="async" />
+        </div>
+      </div>
+
+      <!-- Main Content Column -->
+      <div class="main-column">
+
+        <!-- Header -->
+        <header class="header">
+          <div class="date-badge">
+            <span class="date-badge-dot"></span>
+            <span>Event Period: September 28 ~ November 28</span>
+            <span class="date-badge-dot"></span>
+          </div>
+
+          <h1 class="title">
+            <span class="title-star title-star-1">✦</span>
+            <span class="title-line title-line-1">REFERRAL</span>
+            <span class="title-line title-line-2">EVENT</span>
+            <span class="title-star title-star-2">✦</span>
+            <span class="title-star title-star-3">✦</span>
+          </h1>
+          <p class="header-subtitle">A New Journey Begins with Closers!</p>
+
+          <!-- Intro ticket box -->
+          <div class="ticket-box">
+            <div class="ticket-box-top">
+              <span class="ticket-code">RF-CLS-260928</span>
+              <span class="ticket-label">Closers Global Referral Program</span>
+              <span class="ticket-barcode"></span>
+            </div>
+            <div class="ticket-box-body">
+              <p class="ticket-headline">✨ Better Together, More Rewards! ✨</p>
+              <p>
+                Invite your friends to join <strong>Closers Global</strong> on Papaya Play during the two-month event
+                period starting September 28, and enjoy special rewards together!
+              </p>
+              <p>
+                If you're joining us for the first time, enter a friend's <strong>Invitation Code</strong> to receive a
+                special welcome reward.
+              </p>
+              <p>
+                And there's more! <strong>Reach 500 Contribution</strong> during the event period to receive an
+                additional special reward! 🎁
+              </p>
+              <p>
+                Every invited player who reaches <strong>500 Contribution</strong> also counts toward the Referrer's
+                milestone progress, unlocking additional rewards for the friend who invited you.
+              </p>
+              <p class="ticket-outro">Bring your friends along, play Closers together, and make plenty of memories along
+                the way!</p>
+            </div>
+          </div>
+        </header>
+
+        <!-- Ticket paper body -->
+        <div class="paper">
+          <div class="paper-edge paper-edge-top"></div>
+          <div class="paper-inner">
+
+            <!-- Section 1 — Welcome (Invited Player) -->
+            <section class="section-card">
+              <div class="section-head">
+                <span class="section-badge">Invited Player</span>
+                <h2 class="section-title">Welcome!</h2>
+                <span class="section-head-code">NO. 01</span>
+              </div>
+
+              <div class="reward-grid">
+                <div class="reward-card">
+                  <p class="reward-cond">When you log in after entering<br />the Invitation Code you received</p>
+                  <div class="reward-item reward-item-lg">
+                    <div class="item-box">
+                      <span class="item-gift"></span>
+                    </div>
+                    <p class="item-name">Welcome Newbie Package</p>
+                  </div>
+                  <p class="reward-note">* This package can be received <strong>once per account</strong>.</p>
+                </div>
+
+                <div class="reward-card">
+                  <p class="reward-cond">When you reach 500 Contribution<br />during the event period</p>
+                  <div class="reward-item">
+                    <div class="item-box item-box-sm">
+                      <span class="item-gift"></span>
+                    </div>
+                    <p class="item-name">Item 06</p>
+                  </div>
+                  <p class="reward-note">* You must reach 500 Contribution during the event period to qualify for the
+                    reward.</p>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-label" for="inviteCode">Invitation Code</label>
+                <div class="text-input-wrap" :class="{ 'shake-anim': shakeInput }">
+                  <input id="inviteCode" type="text" class="text-input" v-model="inviteCode"
+                    placeholder="Enter your Invitation Code" @keyup.enter="handleConfirm" />
+                </div>
+                <button class="btn-primary" @click="handleConfirm">Confirm</button>
+              </div>
+
+              <ul class="notes">
+                <li>Paste or enter your invitation code, then click the Confirm button.</li>
+                <li>Log in to Papaya Play and enter your invitation code to receive rewards for you and your friend!</li>
+              </ul>
+
+              <div class="referrer-cta">
+                <p><strong>New to Closers through an invitation? You can become a Referrer too!</strong></p>
+                <p>Create your own Invitation Code below, invite up to 10 friends, and earn even more rewards together!
+                </p>
+              </div>
+            </section>
+
+            <div class="paper-divider">
+              <span class="paper-divider-hole"></span>
+              <span class="paper-divider-line"></span>
+              <span class="paper-divider-hole"></span>
+            </div>
+
+            <!-- Section 2 — My Invitation (Inviting Player) -->
+            <section class="section-card">
+              <div class="section-head">
+                <span class="section-badge">Inviting Player</span>
+                <h2 class="section-title">My Invitation</h2>
+                <span class="section-head-code">NO. 02</span>
+              </div>
+
+              <div class="form-row">
+                <label class="form-label" for="myCode">My Invitation Code</label>
+                <div class="code-display-wrap">
+                  <input id="myCode" type="text" readonly class="code-display" :class="{ empty: !myCode }"
+                    :value="myCode" placeholder="Generate My Code" />
+                </div>
+                <button class="btn-primary" @click="handleGenerate">Generate</button>
+              </div>
+
+              <div class="copy-row">
+                <div class="copy-buttons">
+                  <button class="btn-copy" :class="{ copied: copiedType === 'code' }" :disabled="!myCode"
+                    @click="handleCopyCode">
+                    {{ copiedType === 'code' ? 'Copied!' : 'Copy Code' }}
+                  </button>
+                  <button class="btn-copy" :class="{ copied: copiedType === 'url' }" :disabled="!myCode"
+                    @click="handleCopyUrl">
+                    {{ copiedType === 'url' ? 'Copied!' : 'Copy URL' }}
+                  </button>
+                </div>
+                <div class="referral-info">
+                  <p class="referral-label">Number of Referrals</p>
+                  <p class="referral-count">{{ referralCount }}<span class="referral-max">/ 10</span></p>
+                  <button class="btn-details" @click="showDetails = true">Details</button>
+                </div>
+              </div>
+
+              <ul class="notes">
+                <li>Copy the invitation code or URL and share it with someone you'd like to play with.</li>
+                <li>If the invited user enters the code or logs in to Papaya Play through the shared URL to play Closers,
+                  both players will receive the rewards.</li>
+              </ul>
+
+              <div class="reward-grid">
+                <div class="reward-card">
+                  <p class="reward-cond">When an Invitee Uses<br />Your Invitation Code</p>
+                  <div class="reward-item reward-item-lg">
+                    <p class="reward-hint">You can invite up to 10 players!</p>
+                    <div class="item-box item-box-sm">
+                      <span class="item-gift"></span>
+                    </div>
+                    <p class="item-name">Item 01</p>
+                  </div>
+                  <p class="reward-note">
+                    * Eligible only for users who did not have a Papaya Play account before September 28 (PT), or who
+                    had an account but had never logged in to Closers.<br />
+                    * You will receive 1 × Item 01 for each eligible invitee, up to a maximum of 10 items.
+                  </p>
+                </div>
+
+                <div class="reward-card">
+                  <p class="reward-cond">When Your Invitees Reach<br />500 Contribution Milestones</p>
+                  <div class="milestone-grid">
+                    <div class="milestone">
+                      <p class="milestone-count">1 Invitee</p>
+                      <div class="item-box item-box-xs"><span class="item-gift"></span></div>
+                      <p class="item-name">Item 02</p>
+                    </div>
+                    <div class="milestone">
+                      <p class="milestone-count">2 Invitees</p>
+                      <div class="item-box item-box-xs"><span class="item-gift"></span></div>
+                      <p class="item-name">Item 03</p>
+                    </div>
+                    <div class="milestone">
+                      <p class="milestone-count">3 Invitees</p>
+                      <div class="item-box item-box-xs"><span class="item-gift"></span></div>
+                      <p class="item-name">Item 04</p>
+                    </div>
+                    <div class="milestone">
+                      <p class="milestone-count">5 Invitees</p>
+                      <div class="item-box item-box-xs"><span class="item-gift"></span></div>
+                      <p class="item-name">Item 05</p>
+                    </div>
+                  </div>
+                  <p class="reward-note">
+                    * Based on the number of eligible new Closers players you invited who each reach
+                    <strong>500 Contribution during the event period</strong>.<br />
+                    * Rewards are <strong>NOT granted immediately</strong> when a milestone is reached. Eligibility is
+                    calculated based on Contribution earned through the previous day, and rewards are distributed daily
+                    at <strong>6:00 PM (PT)</strong>.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </div><!-- /paper -->
+
+        <!-- Envelope + Notices -->
+        <div class="envelope-wrap">
+          <div class="envelope-back"></div>
+          <div class="envelope-figure">
+            <img class="envelope-img" src="images/envelope.webp" alt="" loading="lazy" decoding="async" />
+            <img class="wax-seal" src="images/seal.webp" alt="" loading="lazy" decoding="async" />
+          </div>
+          <div class="notices">
+            <div class="notices-head">
+              <span class="notices-title">Important Notices</span>
+              <span class="ticket-barcode ticket-barcode-light"></span>
+            </div>
+            <ul class="notices-list">
+              <li>The event entry will be completed once the invited user logs into Papaya Play.</li>
+              <li>Only one code can be entered per account.</li>
+              <li>Rewards are sent to your Mailbox in-game, and must be claimed within 14 days.</li>
+              <li>All times are based on PT.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="footer-logos">
+            <img class="logo-papaya" src="images/logo_papaya.png" alt="Papaya Play" loading="lazy" />
+            <img class="logo-closers" src="images/logo_closers.webp" alt="Closers" loading="lazy" />
+          </div>
+          <p class="copyright">© Vertigo Games Inc. All Rights Reserved. &nbsp;·&nbsp; © Vertigo Games America Inc. All
+            Rights Reserved.</p>
+        </footer>
+
+      </div><!-- /main-column -->
+
+      <!-- Details Popup -->
+      <div v-if="showDetails" class="popup-backdrop" @click="showDetails = false">
+        <div class="popup-panel" @click.stop>
+          <div class="popup-header">
+            <div>
+              <span class="section-badge">Inviting Player</span>
+              <h2 class="popup-title">Referred Users</h2>
+            </div>
+            <button class="btn-close" @click="showDetails = false" aria-label="Close">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <line x1="1" y1="1" x2="13" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="13" y1="1" x2="1" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="details-table">
+            <div class="table-header">
+              <div class="table-header-cell">No.</div>
+              <div class="table-header-cell">Date</div>
+              <div class="table-header-cell">Papaya Play Account</div>
+            </div>
+            <div class="table-body">
+              <div v-for="(row, idx) in referralData" :key="row.no" class="table-row"
+                :class="idx % 2 === 1 ? 'even' : 'odd'">
+                <div class="table-cell no-col">{{ row.no }}</div>
+                <div class="table-cell" :class="{ empty: row.date === '-' }">{{ row.date }}</div>
+                <div class="table-cell" :class="{ empty: row.account === '-' }">{{ row.account }}</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="popup-note">• Information is shown for the first 10 users only; rewards are limited to a maximum of
+            10 per account.</p>
+        </div>
+      </div>
+
+      <!-- Confirm Result Popup -->
+      <div v-if="resultPopup" class="result-popup-backdrop" @click="resultPopup = null">
+        <div class="result-popup-panel" :class="resultPopup.type" @click.stop>
+          <div class="result-popup-body">
+            <div class="result-popup-icon" :class="resultPopup.type">
+              <svg v-if="resultPopup.type === 'success'" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <polyline points="6,14 11,20 22,9" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <svg v-else width="26" height="26" viewBox="0 0 26 26" fill="none">
+                <line x1="13" y1="5" x2="13" y2="15" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <circle cx="13" cy="20.5" r="1.8" fill="currentColor" />
+              </svg>
+            </div>
+            <p class="result-popup-title">{{ resultPopup.title }}</p>
+            <p class="result-popup-message">{{ resultPopup.message }}</p>
+            <button class="result-popup-btn" :class="resultPopup.type" @click="resultPopup = null">OK</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Container -->
+      <div class="toast-container">
+        <div v-for="toast in toasts" :key="toast.id" class="toast" :class="{ 'toast-out': toast.leaving }">
+          <span class="toast-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5" />
+              <polyline points="5,9 8,12 13,6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="toast-text">{{ toast.message }}</span>
+        </div>
+      </div>
+
+    </div><!-- /page-wrapper -->
+  </div><!-- /app -->
+
+  <!-- Vue 2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.min.js"></script>
+  <!-- Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function () {
+        return {
+          inviteCode: '',
+          shakeInput: false,
+          myCode: '',
+          referralCount: 0,
+          copiedType: null,
+          showDetails: false,
+          resultPopup: null,
+          toasts: [],
+          referralData: [
+            { no: 1, date: '2026-XX-XX 00:00:00', account: 'Play***' },
+            { no: 2, date: '2026-XX-XX 00:00:00', account: 'Play***' },
+            { no: 3, date: '2026-XX-XX 00:00:00', account: 'Play***' },
+            { no: 4, date: '-', account: '-' },
+            { no: 5, date: '-', account: '-' },
+            { no: 6, date: '-', account: '-' },
+            { no: 7, date: '-', account: '-' },
+            { no: 8, date: '-', account: '-' },
+            { no: 9, date: '-', account: '-' },
+            { no: 10, date: '-', account: '-' }
+          ]
+        };
+      },
+      mounted: function () {
+        var self = this;
+        this._onKeydown = function (e) {
+          if (e.key === 'Escape') { self.showDetails = false; self.resultPopup = null; }
+        };
+        window.addEventListener('keydown', this._onKeydown);
+      },
+      beforeDestroy: function () {
+        window.removeEventListener('keydown', this._onKeydown);
+      },
+      methods: {
+        showError: function (title, message) {
+          var self = this;
+          this.shakeInput = true;
+          setTimeout(function () { self.shakeInput = false; }, 400);
+          this.resultPopup = { type: 'error', title: title, message: message };
+        },
+        handleConfirm: function () {
+          var code = this.inviteCode.trim();
+          // Empty code
+          if (!code) {
+            this.showError('No Code Entered', 'Please check the referral code and try again.');
+            return;
+          }
+          // Invalid format: alphanumeric (spaces/dashes allowed), 4-24 chars
+          if (!/^[A-Za-z0-9 _-]{4,24}$/.test(code)) {
+            this.showError('Invalid Code', 'Please check the referral code and try again.');
+            return;
+          }
+          // No character on the account (server-side case; shown here for reference)
+          // this.showError('No Character Found', 'No characters have been created. Please check your Account.');
+
+          // Success (in production this would be an API call)
+          this.resultPopup = {
+            type: 'success',
+            title: 'Code Registered!',
+            message: 'Your referral code has been registered successfully! Please check your in-game rewards.'
+          };
+          this.inviteCode = '';
+          if (window.confetti) {
+            window.confetti({
+              particleCount: 140,
+              spread: 80,
+              origin: { y: 0.6 },
+              colors: ['#ffc400', '#ffffff', '#3d5af1', '#8ea2ff', '#ff3d8f']
+            });
+          }
+        },
+        handleGenerate: function () {
+          if (this.myCode) return; // one code per account
+          var code = 'CLS'
+            + Math.random().toString(36).substring(2, 5).toUpperCase()
+            + Math.random().toString(36).substring(2, 5).toUpperCase();
+          this.myCode = code.slice(0, 3) + ' ' + code.slice(3, 6) + ' ' + code.slice(6, 9);
+        },
+        showToast: function (message) {
+          var self = this;
+          var id = Date.now();
+          this.toasts.push({ id: id, message: message, leaving: false });
+          setTimeout(function () {
+            var toast = self.toasts.find(function (t) { return t.id === id; });
+            if (toast) toast.leaving = true;
+            setTimeout(function () {
+              self.toasts = self.toasts.filter(function (t) { return t.id !== id; });
+            }, 250);
+          }, 2200);
+        },
+        handleCopyCode: function () {
+          if (!this.myCode) return;
+          navigator.clipboard.writeText(this.myCode.replace(/ /g, '')).catch(function () { });
+          this.copiedType = 'code';
+          this.showToast('Invitation Code has been Copied');
+          var self = this;
+          setTimeout(function () { self.copiedType = null; }, 1500);
+        },
+        handleCopyUrl: function () {
+          if (!this.myCode) return;
+          navigator.clipboard.writeText(
+            'https://papayaplay.com/closers/referral?code=' + this.myCode.replace(/ /g, '')
+          ).catch(function () { });
+          this.copiedType = 'url';
+          this.showToast('Invitation Link has been Copied.');
+          var self = this;
+          setTimeout(function () { self.copiedType = null; }, 1500);
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
