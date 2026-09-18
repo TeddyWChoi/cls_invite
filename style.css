@@ -196,7 +196,12 @@ ul {
 @media (prefers-reduced-motion: reduce) {
 
   .char,
-  .char-float {
+  .char-float,
+  .date-badge,
+  .title-line,
+  .title-star,
+  .header-subtitle,
+  .ticket-box {
     animation: none;
   }
 }
@@ -232,6 +237,7 @@ ul {
   text-transform: uppercase;
   margin-bottom: 20px;
   box-shadow: 0 0 0 4px rgba(255, 196, 0, 0.08);
+  animation: hdr-drop 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
 .date-badge-dot {
@@ -264,9 +270,14 @@ ul {
     drop-shadow(2px 0 0 #1b2a80) drop-shadow(-2px 0 0 #1b2a80) drop-shadow(0 2px 0 #1b2a80) drop-shadow(0 -2px 0 #1b2a80) drop-shadow(0 7px 0 #0a1240) drop-shadow(0 14px 22px rgba(0, 0, 0, 0.55));
 }
 
+.title-line-1 {
+  animation: title-in-left 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+
 .title-line-2 {
   font-size: 108px;
   margin-top: -6px;
+  animation: title-in-right 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
 }
 
 .title-star {
@@ -274,27 +285,88 @@ ul {
   color: var(--yellow);
   font-style: normal;
   text-shadow: 0 0 12px rgba(255, 196, 0, 0.9), 0 0 24px rgba(255, 196, 0, 0.5);
-  animation: twinkle 2.4s ease-in-out infinite;
+  animation: star-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both, twinkle 2.4s ease-in-out infinite;
 }
 
 .title-star-1 {
   left: -6px;
   top: 8px;
   font-size: 30px;
+  animation-delay: 1s, 1.5s;
 }
 
 .title-star-2 {
   right: -10px;
   bottom: 16px;
   font-size: 40px;
-  animation-delay: 0.8s;
+  animation-delay: 1.15s, 2.3s;
 }
 
 .title-star-3 {
   right: 34px;
   top: -14px;
   font-size: 18px;
-  animation-delay: 1.5s;
+  animation-delay: 1.3s, 3s;
+}
+
+@keyframes hdr-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hdr-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes title-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-48px) scale(1.18);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes title-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(48px) scale(1.18);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes star-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes twinkle {
@@ -320,6 +392,7 @@ ul {
   text-transform: uppercase;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   margin-bottom: 44px;
+  animation: hdr-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.75s both;
 }
 
 .header-subtitle::before,
@@ -348,6 +421,7 @@ ul {
   border-radius: 14px;
   text-align: left;
   box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  animation: hdr-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.95s both;
 }
 
 /* side notches */
