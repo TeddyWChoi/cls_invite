@@ -421,6 +421,10 @@ ul {
   color: var(--text);
 }
 
+.ticket-box-body p {
+  text-wrap: balance;
+}
+
 .ticket-box-body p+p {
   margin-top: 10px;
 }
@@ -546,11 +550,11 @@ ul {
   color: var(--blue-soft);
 }
 
-/* ─── Reward Grid ─── */
-.reward-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
+/* ─── Rewards ─── */
+.reward-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   margin-bottom: 26px;
 }
 
@@ -559,9 +563,7 @@ ul {
   background: var(--white);
   border: 1.5px solid var(--blue-line);
   border-radius: 10px;
-  padding: 18px 18px 16px;
-  display: flex;
-  flex-direction: column;
+  padding: 18px 20px 16px;
   box-shadow: 0 6px 18px rgba(27, 42, 128, 0.08);
 }
 
@@ -579,7 +581,7 @@ ul {
 .reward-cond {
   font-family: var(--font-cond);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.25;
   color: var(--navy);
   text-align: center;
@@ -587,13 +589,11 @@ ul {
 }
 
 .reward-item {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 12px 0 14px;
+  gap: 12px;
+  padding: 16px 12px 18px;
   background: var(--blue-tint);
   border-radius: 8px;
   margin-bottom: 12px;
@@ -603,57 +603,138 @@ ul {
   font-family: var(--font-cond);
   font-weight: 600;
   font-size: 14px;
-  color: var(--blue);
   letter-spacing: 0.5px;
+  color: var(--blue);
+}
+
+.package-name {
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: var(--blue);
+}
+
+/* item row: icons aligned on one line, wrapping on narrow screens */
+.item-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 4px;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 88px;
 }
 
 .item-box {
-  width: 128px;
-  height: 128px;
-  border-radius: 12px;
-  background: var(--white);
-  border: 1.5px solid var(--blue-line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 10px rgba(27, 42, 128, 0.08);
-}
-
-.item-box-sm {
-  width: 88px;
-  height: 88px;
-}
-
-.item-box-xs {
-  width: 64px;
-  height: 64px;
+  position: relative;
+  width: 72px;
+  height: 72px;
   border-radius: 10px;
+  background: #0f1d3a;
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 1.5px var(--blue-line), 0 4px 10px rgba(27, 42, 128, 0.15);
+  overflow: visible;
 }
 
-/* placeholder gift icon */
-.item-gift {
-  width: 44%;
-  height: 44%;
-  background:
-    linear-gradient(var(--yellow), var(--yellow)) center/100% 4px no-repeat,
-    linear-gradient(var(--yellow), var(--yellow)) center/4px 100% no-repeat,
-    linear-gradient(135deg, var(--blue-soft), var(--blue));
+.item-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* quantity tag on the icon corner */
+.item-qty {
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  min-width: 30px;
+  padding: 2px 7px;
+  background: linear-gradient(180deg, #ffd23f 0%, var(--yellow) 100%);
+  border: 1.5px solid #fff6cc;
   border-radius: 6px;
-  opacity: 0.9;
+  color: var(--navy);
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 12.5px;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .item-name {
   font-family: var(--font-cond);
-  font-weight: 700;
-  font-size: 17px;
-  letter-spacing: 0.5px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.25;
+  min-height: 2.5em;
   color: var(--text);
   text-align: center;
 }
 
+/* hero item: single highlighted reward */
+.item-row-hero .item {
+  width: 260px;
+}
+
+.item-hero .item-box {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+}
+
+.item-hero .item-qty {
+  font-size: 14px;
+  padding: 3px 9px;
+}
+
+/* costume boxes: same size as other items, wider spacing */
+.item-row-sm {
+  gap: 14px 14px;
+}
+
+.item-row-sm .item {
+  width: 104px;
+}
+
+.item-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.item-divider::before,
+.item-divider::after {
+  content: '';
+  flex: 1;
+  border-top: 1.5px dashed var(--blue-line);
+}
+
+.item-sub-note {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--blue);
+  text-align: center;
+}
+
 .reward-note {
-  font-size: 12.5px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.55;
   color: var(--pink);
 }
 
@@ -661,35 +742,44 @@ ul {
   font-weight: 700;
 }
 
-.milestone-grid {
-  flex: 1;
+/* milestones */
+.milestone-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  background: var(--blue-tint);
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 12px;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+  gap: 8px;
+  width: 100%;
 }
 
 .milestone {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 8px 4px;
+  gap: 12px;
+  padding: 12px 6px 10px;
+  background: var(--white);
+  border: 1.5px solid var(--blue-line);
+  border-radius: 8px;
+}
+
+.milestone .item-row {
+  gap: 10px 6px;
+}
+
+.milestone .item {
+  width: 112px;
 }
 
 .milestone-count {
+  display: inline-block;
+  padding: 3px 12px;
+  background: linear-gradient(180deg, #ffd23f 0%, var(--yellow) 100%);
+  color: var(--navy);
   font-family: var(--font-cond);
   font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.5px;
-  color: var(--blue);
-}
-
-.milestone .item-name {
-  font-size: 14px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 4px;
 }
 
 /* ─── Form Row ─── */
@@ -941,7 +1031,7 @@ ul {
 /* ─── Envelope + Notices ─── */
 .envelope-wrap {
   position: relative;
-  margin: -46% 4% 0;
+  margin: -42% 4% 0;
 }
 
 /* envelope back panel sits behind the letter */
@@ -1454,8 +1544,12 @@ ul {
 
 /* ─── Tablet / small desktop ─── */
 @media (max-width: 860px) {
-  .reward-grid {
-    grid-template-columns: 1fr;
+  .milestone-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .milestone-wide {
+    grid-column: 1 / -1;
   }
 }
 
@@ -1574,8 +1668,13 @@ ul {
     font-size: 19px;
   }
 
+  .paper {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+
   .paper-inner {
-    padding: 12px 14px 44%;
+    padding: 12px 12px 44%;
   }
 
   .paper-divider {
@@ -1598,9 +1697,34 @@ ul {
     font-size: 16px;
   }
 
-  .item-box {
-    width: 104px;
-    height: 104px;
+  .reward-item {
+    padding: 14px 6px 16px;
+  }
+
+  .item-row {
+    gap: 14px 2px;
+  }
+
+  .item,
+  .item-row-sm .item {
+    width: 84px;
+  }
+
+  .item-name {
+    font-size: 13px;
+  }
+
+  .item-row-sm {
+    gap: 14px 6px;
+  }
+
+  .milestone .item {
+    width: 110px;
+  }
+
+  .reward-note,
+  .item-sub-note {
+    font-size: 13.5px;
   }
 
   .form-row {
