@@ -669,8 +669,13 @@ ul {
   gap: 12px;
   padding: 16px 12px 18px;
   background: var(--blue-tint);
+  border: 1.5px solid var(--blue-line);
   border-radius: 8px;
   margin-bottom: 12px;
+}
+
+.reward-item+.reward-item {
+  margin-top: -2px;
 }
 
 .reward-hint {
@@ -755,8 +760,12 @@ ul {
 }
 
 /* hero item: single highlighted reward */
+.item-row-hero {
+  gap: 14px 28px;
+}
+
 .item-row-hero .item {
-  width: 260px;
+  width: 240px;
 }
 
 .item-hero .item-box {
