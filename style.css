@@ -828,9 +828,92 @@ ul {
 /* milestones */
 .milestone-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   width: 100%;
+}
+
+.milestone-wide {
+  grid-column: 1 / -1;
+}
+
+.milestone-wide .item-row {
+  gap: 10px 24px;
+}
+
+.item-row-wide {
+  gap: 14px 18px;
+}
+
+.item-row-wide .item {
+  width: 120px;
+}
+
+/* lucky draw */
+.lucky-draw {
+  width: 100%;
+  margin-top: 4px;
+  padding: 14px 18px 16px;
+  background: var(--navy);
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 196, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.lucky-draw-body {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cl-coin {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+}
+
+.lucky-draw-text {
+  text-align: left;
+}
+
+.lucky-draw-prize {
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+  color: var(--white);
+}
+
+.lucky-draw-winners {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 10px;
+  background: var(--yellow);
+  color: var(--navy);
+  font-family: var(--font-cond);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+.lucky-draw-note {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--yellow);
+  text-align: center;
+}
+
+.lucky-draw-note strong {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .milestone {
@@ -849,7 +932,7 @@ ul {
 }
 
 .milestone .item {
-  width: 112px;
+  width: 110px;
 }
 
 .milestone-count {
@@ -1802,7 +1885,19 @@ ul {
   }
 
   .milestone .item {
-    width: 110px;
+    width: 96px;
+  }
+
+  .item-row-wide .item {
+    width: 96px;
+  }
+
+  .lucky-draw {
+    padding: 12px 12px 14px;
+  }
+
+  .lucky-draw-prize {
+    font-size: 22px;
   }
 
   .reward-note,
